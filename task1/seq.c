@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     if (argc != 2) {
         printf("Использование: %s <количество_элементов>\n", argv[0]);
         return 1;
@@ -15,19 +15,17 @@ int main(int argc, char *argv[]) {
     }
 
     // Выделяем память под массив
-    double *array = (double *)malloc(n * sizeof(double));
+    double* array = (double*)malloc(n * sizeof(double));
     if (array == NULL) {
         printf("Ошибка выделения памяти\n");
         return 1;
     }
 
-    // Инициализируем генератор случайных чисел
     srand(time(NULL));
     for (long i = 0; i < n; i++) {
         array[i] = (double)(rand() % 1000) / 10.0;  // 0.0 до 99.9
     }
 
-    // Засекаем время начала
     clock_t start = clock();
 
     // Вычисление суммы
@@ -36,7 +34,6 @@ int main(int argc, char *argv[]) {
         sum += array[i];
     }
 
-    // Засекаем время конца
     clock_t end = clock();
     double elapsed = (double)(end - start) / CLOCKS_PER_SEC;
 
